@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
-    <link href="https://cdn.bootcss.com/mui/3.7.1/css/mui.min.css" rel="stylesheet"/>
-    <script type="text/javascript" charset="utf-8">
-        document.addEventListener( "plusready", function(){
-            mui.init();
-        });
-        function getCamera(){
-            var cam = plus.camera.getCamera();
-            //字符串数组,摄像头支持的拍照分辨率
-            var Resolutions = cam.supportedImageResolutions[0];
-            //字符串数组,摄像头支持的拍照文件格式
-            var Formats = cam.supportedImageFormats[0];
-            //调用拍照方法
-            //capturedFile,拍照完成后，照片的存放地址
-            cam.captureImage(function(capturedfile){
-                //拍照成功
-                alert(capturedfile);//打印一下
-            },function(){
-                //拍照失败
-            },{
-                //拍照参数
-                format : Formats,
-                index : 1//1表示主摄像头，2表示辅摄像头
+
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+
+    <body>
+        <video id="video" width="640" height="480" autoplay></video>
+    </body>
+    <script type="text/javascript">
+        var promisifiedOldGUM = function(constraints) {
+
+            // 第一个拿到getUserMedia，如果存在
+            var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+
+            // 有些浏览器只是不实现它-返回一个不被拒绝的承诺与一个错误保持一致的接口
+            if (!getUserMedia) {
+                return Promise.reject(new Error('getUserMedia is not implemented in this browser-getUserMedia是不是在这个浏览器实现'));
+            }
+
+            // 否则，调用包在一个旧navigator.getusermedia承诺
+            return new Promise(function(resolve, reject) {
+                getUserMedia.call(navigator, constraints, resolve, reject);
             });
-            
-            var Resolutions = cam.supportedImageResolutions[0];
-            //字符串数组，摄像头支持的拍照文件格式
-            var Formats = cam.supportedImageFormats[0];
-            //调用拍照方法
-            //capturedFile,拍照完成后，照片的存放地址
-            cam.captureImage(function(capturedFile){
-                //拍照成功
-                alert(capturedFile);//打印一下
-                //调用系统方法,根据照片地址获取照片
-                plus.io.resolvLocalFileSystemURL(capturedFile,
-                    //成功的回调函数
-                    //entry文件的相关信息
-                    function(entry){
-                        var img = document.createElement("img");
-                        img.src = entry.toLocalURL();
-                        document.documentElement.appendChild(img);
-                    },function(){
-                        //失败的回调函数
-                    });
-            });
+
         }
+
+        // 旧的浏览器可能无法实现mediadevices可言，所以我们设置一个空的对象第一
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+        }
+
+        // 一些浏览器部分实现mediadevices。我们不能只指定一个对象
+        // 随着它将覆盖现有的性能getUserMedia。.
+        // 在这里，我们就要错过添加getUserMedia财产。.     
+        if (navigator.mediaDevices.getUserMedia === undefined) {
+            navigator.mediaDevices.getUserMedia = promisifiedOldGUM;
+        }
+
+        // Prefer camera resolution nearest to 1280x720.
+        var constraints = {
+            audio: true,
+            video: {
+                width: 1280,
+                height: 720
+            }
+        };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(stream) {
+                var video = document.querySelector('video');
+                video.src = window.URL.createObjectURL(stream);
+                video.onloadedmetadata = function(e) {
+                    video.play();
+                };
+            }).catch(function(err) {
+                console.log(err.name + ": " + err.message);
+            });
     </script>
-</head>
-<body>
-    <button onclick="getCamera()">照相</button>
-</body>
+
 </html>
