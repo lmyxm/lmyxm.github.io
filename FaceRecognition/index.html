@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>人脸识别</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+
+<body style="background: #001e37">
+    <div class="box">
+        <div class="headr">
+            <div class="headertop">某某实验小学</div>
+            <div class="headertop headmain">
+                <h2>人脸识别管理系统</h2>
+            </div>
+            <div class="headertop headright">2019年12月8日 星期六 09:20:51</div>
+        </div>
+        <div class="main">
+            <div class="left">
+                <div class="table">
+                    <h2>学校实时信息</h2>
+                    <ul>
+                        <li>
+                            <p>今日来访人员</p><span class="yichang1">32</span><u>人</u>
+                        </li>
+                        <li>
+                            <p>累计来访人员</p><span class="yichang1">311</span><u>人</u>
+                        </li>
+                        <li>
+                            <p>人员异常通过</p><span class="yichang1">3</span><u>次</u>
+                        </li>
+                        <li>
+                            <p>昨日出入率</p><span class="yichang1">99</span><u>%</u>
+                        </li>
+                        <li>
+                            <p>安全隐患信息</p><span class="yichang1">5</span><u>条</u>
+                        </li>
+                    </ul>
+                </div>
+                <div class="table lefttable2">
+                    <ul>
+                        <li>
+                            <p>班级</p><span>姓名</span><u>学生出入异常</u>
+                        </li>
+                        <li>
+                            <p>三年二班</p><span>赵万松</span><u class="yichang">异常</u>
+                        </li>
+                        <li>
+                            <p>三年二班</p><span>赵万松</span><u class="yichang1">无异常</u>
+                        </li>
+                        <li>
+                            <p>三年二班</p><span>赵万松</span><u class="yichang1">无异常</u>
+                        </li>
+                        <li>
+                            <p>三年二班</p><span>赵万松</span><u class="yichang">异常</u>
+                        </li>
+                        <li>
+                            <p>三年二班</p><span>赵万松</span><u class="yichang1">无异常</u>
+                        </li>
+                        <li>
+                            <p>三年二班</p><span>赵万松</span><u class="yichang1">无异常</u>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="zhong">
+                <img src="./assets/img/8.png" alt="" class="tupian">
+                <img src="./assets/img/8.png" alt="" class="tupian tupian2">
+            </div>
+            <div class="right">
+                <div class="rightbox clearfix ">
+                    <div class="table1">
+                        <h3>陌生人出入记录</h3>
+                        <ul class="rightleft">
+                            <li  class="clearfix">
+                                <img src="./assets/img/14.png" alt="" class="touxiang">
+                                <div>
+                                    <p>张三</p><span>2019-12-8 15:30:50</span>
+                                </div>
+                            </li>
+                            <li  class="clearfix">
+                                <img src="./assets/img/14.png" alt="" class="touxiang">
+                                <div>
+                                    <p>张三</p><span>2019-12-8 15:30:50</span>
+                                </div>
+                            </li>
+                            <li  class="clearfix">
+                                <img src="./assets/img/14.png" alt="" class="touxiang">
+                                <div>
+                                    <p>张三</p><span>2019-12-8 15:30:50</span>
+                                </div>
+                            </li>
+                            <li  class="clearfix">
+                                <img src="./assets/img/14.png" alt="" class="touxiang">
+                                <div>
+                                    <p>张三</p><span>2019-12-8 15:30:50</span>
+                                </div>
+                            </li>
+                            <li  class="clearfix">
+                                <img src="./assets/img/14.png" alt="" class="touxiang">
+                                <div>
+                                    <p>张三</p><span>2019-12-8 15:30:50</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="table2">
+                        <ul class="clearfix">
+                            <li class="top" style="margin-top: 0.78rem;">
+                                <p>在校学生</p><span style="margin-left: .2rem;margin-top: .15rem">680</span>
+                            </li>
+                            <li>
+                                <p>离校学生</p><span style="margin-left: .2rem ;margin-top: .15rem">520</span>
+                            </li>
+                            <li>
+                                <span class="zongshu">总的出入数：680</span>
+                            </li>
+                            <li>
+                                <div class="yuanquuan">
+                                    <canvas id="c1" height="70" width="70" style="    margin: 0.08rem;   float: left;"></canvas>
+                                    <u>400</u>
+                                    <i>空床位</i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="yuanquuan">
+                                    <canvas id="c2" height="70" width="70" style="    margin: 0.08rem;    float: left;"></canvas>
+                                    <u>800</u>
+                                    <i>入住</i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foert ">
+            <h2>学生出入记录</h2>
+            <ul class="clearfix">
+                <li><img src="./assets/img/10.png" alt="">
+                    <div class="imgping">
+                        <h3 class="luse">入</h3>
+                        <p>张三</p>
+                        <p>15:23:30</p>
+                        <p>班级：三年二班</p>
+                    </div>
+                </li>
+                <li><img src="./assets/img/10.png" alt="">
+                    <div class="imgping">
+                        <h3>出</h3>
+                        <p>张三</p>
+                        <p>15:23:30</p>
+                        <p>班级：三年二班</p>
+                    </div>
+                </li>
+                <li><img src="./assets/img/10.png" alt="">
+                    <div class="imgping">
+                        <h3>出</h3>
+                        <p>张三</p>
+                        <p>15:23:30</p>
+                        <p>班级：三年二班</p>
+                    </div>
+                </li>
+                <li><img src="./assets/img/10.png" alt="">
+                    <div class="imgping">
+                        <h3 class="luse">入</h3>
+                        <p>张三</p>
+                        <p>15:23:30</p>
+                        <p>班级：三年二班</p>
+                    </div>
+                </li>
+                <li><img src="./assets/img/10.png" alt="">
+                    <div class="imgping">
+                        <h3>出</h3>
+                        <p>张三</p>
+                        <p>15:23:30</p>
+                        <p>班级：三年二班</p>
+                    </div>
+                </li>
+                <li><img src="./assets/img/10.png" alt="">
+                    <div class="imgping">
+                        <h3>出</h3>
+                        <p>张三</p>
+                        <p>15:23:30</p>
+                        <p>班级：三年二班</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt =
+            "orientationchange" in window ? "orientationchange" : "resize",
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 1920) + "px";
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        recalc();
+    })(document, window);
+    window.onload = function () {
+        var oGC = document.getElementById('c1').getContext('2d');
+        var oGC1 = document.getElementById('c2').getContext('2d');
+
+        function toDraw(opj, data) {
+            var x = 35;
+            var y = 35;
+            var r = 30;
+            opj.strokeStyle = '#36c148';
+            opj.lineWidth = '2';
+            opj.beginPath();
+            opj.arc(x, y, r, (-90) * Math.PI / 180, (-25 + data) * 3.6 * Math.PI / 180, false);
+            opj.stroke();
+            opj.font = "Bold 10px Arial";
+            opj.fillStyle = "#ccc";
+            opj.textAlign = "center";
+            // opj.fillText(data + '%', x, y);
+        }
+
+        function toDraw1(opj, data) {
+            var x = 35;
+            var y = 35;
+            var r = 30;
+
+            opj.strokeStyle = '#abcdef';
+            opj.lineWidth = '2';
+            opj.beginPath();
+            opj.arc(x, y, r, (-90) * Math.PI / 180, (-25 + data) * 3.6 * Math.PI / 180, false);
+            opj.stroke();
+            opj.font = "Bold 10px Arial";
+            opj.fillStyle = "#ccc";
+            opj.textAlign = "center";
+            // opj.fillText(data + '%', x, y);
+        }
+
+        toDraw(oGC, 20);
+        toDraw1(oGC1, 100);
+
+
+    }
+</script>
+
+
+</html>
